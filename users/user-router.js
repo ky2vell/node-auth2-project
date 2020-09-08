@@ -11,7 +11,7 @@ const router = express.Router();
 // @access  Private
 router.get('/users', userAuth(), async (req, res, next) => {
   try {
-    const users = await Users.getUsers();
+    const users = await Users.getUsers({ department: req.token.department });
 
     res.status(200).json({ count: users.length, data: users });
   } catch (err) {

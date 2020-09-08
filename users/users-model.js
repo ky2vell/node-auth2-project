@@ -1,7 +1,7 @@
 const db = require('../data/config');
 
-function getUsers() {
-  return db('users').select('id', 'username', 'department');
+function getUsers(role) {
+  return db('users').select('id', 'username', 'department').where(role);
 }
 
 function findById(id) {
